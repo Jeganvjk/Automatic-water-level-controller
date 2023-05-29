@@ -51,86 +51,91 @@ In this circuit Ultrasonic sensor module is placed at the top of bucket (water t
 
 
 ## PROGRAM:
-#include <LiquidCrystal.h>
-#define trigger 10
-#define echo 11
-#define motor 8
-#define buzzer 12
-#define led1 9
-#define led2 13
-#define led3 1
+#include <LiquidCrystal.h></br>
+
+#define trigger 10</br>
+
+#define echo 11</br>
+
+#define motor 8</br>
+#define buzzer 12</br>
+#define led1 9</br>
+#define led2 13</br>
+#define led3 1</br>
  
-LiquidCrystal lcd(7,6,5,4,3,2);
+LiquidCrystal lcd(7,6,5,4,3,2);</br>
  
-float time=0,distance=0;
-int temp=0; 
-void setup()
-{
- lcd.begin(16,2);
- pinMode(trigger,OUTPUT);
- pinMode(echo,INPUT);
- pinMode(motor, OUTPUT);
- pinMode(buzzer, OUTPUT);
- pinMode(led1, OUTPUT);
- pinMode(led2, OUTPUT);
- pinMode(led3, OUTPUT);
- }
- void loop()
-{
- lcd.clear();
- digitalWrite(trigger,LOW);
- delayMicroseconds(2);
- digitalWrite(trigger,HIGH);
- delayMicroseconds(10);
- digitalWrite(trigger,LOW);
- delayMicroseconds(2);
- time=pulseIn(echo,HIGH);
- distance=time*340/20000;
- lcd.clear();
- lcd.print("AWL CONTROL");
- delay(2000);
- if(distance<500)
- {
-     digitalWrite(motor, LOW);
-     digitalWrite(led1, HIGH);
-     lcd.clear();
-     lcd.print("Water Tank Full ");
-     lcd.setCursor(0,1);
-     lcd.print("Motor Turned OFF");
-     delay(5000);
-     digitalWrite(led1, LOW);
-     }
+float time=0,distance=0;</br>
+int temp=0; </br>
+void setup()</br>
+{</br>
+ lcd.begin(16,2);</br>
+ pinMode(trigger,OUTPUT);</br>
+ pinMode(echo,INPUT);</br>
+ pinMode(motor, OUTPUT);</br>
+ pinMode(buzzer, OUTPUT);</br>
+ pinMode(led1, OUTPUT);</br>
+ pinMode(led2, OUTPUT);</br>
+ pinMode(led3, OUTPUT);</br>
+ }</br>
+ void loop()</br>
+{</br>
+ lcd.clear();</br>
+ digitalWrite(trigger,LOW);</br>
+ delayMicroseconds(2);</br>
+ digitalWrite(trigger,HIGH);</br>
+ delayMicroseconds(10);</br>
+ digitalWrite(trigger,LOW);</br>
+ delayMicroseconds(2);</br>
+ time=pulseIn(echo,HIGH);</br>
+ distance=time*340/20000;</br>
+ lcd.clear();</br>
+ lcd.print("AWL CONTROL");</br>
+ delay(2000);</br>
+ if(distance<500)</br>
+ {</br>
+     digitalWrite(motor, LOW);</br>
+     digitalWrite(led1, HIGH);</br>
+     lcd.clear();</br>
+     lcd.print("Water Tank Full ");</br>
+     lcd.setCursor(0,1);</br>
+     lcd.print("Motor Turned OFF");</br>
+     delay(5000);</br>
+     digitalWrite(led1, LOW);</br>
+     }</br>
  
-  else if(distance>500 && distance<750)
- {
-     digitalWrite(motor, LOW);
-     digitalWrite(led2, HIGH);
-     lcd.clear();
-     lcd.print("Water Tank Full ");
-     lcd.setCursor(0,1);
-     lcd.print("Motor Turned OFF");
-     delay(5000);
-     digitalWrite(led2, LOW);
- }
+  else if(distance>500 && distance<750)</br>
+ {</br>
+     digitalWrite(motor, LOW);</br>
+     digitalWrite(led2, HIGH);</br>
+     lcd.clear();</br>
+     lcd.print("Water Tank Full ");</br>
+     lcd.setCursor(0,1);</br>
+     lcd.print("Motor Turned OFF");</br>
+     delay(5000);</br>
+     digitalWrite(led2, LOW);</br>
+ }</br>
  
- else if(distance>750)
- {
-   digitalWrite(motor, HIGH);
-   digitalWrite(buzzer, HIGH);
-   digitalWrite(led3, HIGH);
-   lcd.clear();
-   lcd.print("LOW Water Level");
-   lcd.setCursor(0,1);
-   lcd.print("Motor Turned ON");
-   delay(5000);
-   digitalWrite(buzzer, LOW);
-   digitalWrite(led3, LOW);
-    }
-}
+ else if(distance>750)</br>
+ {</br>
+   digitalWrite(motor, HIGH);</br>
+   digitalWrite(buzzer, HIGH);</br>
+   digitalWrite(led3, HIGH);</br>
+   lcd.clear();</br>
+   lcd.print("LOW Water Level");</br>
+   lcd.setCursor(0,1);</br>
+   lcd.print("Motor Turned ON");</br>
+   delay(5000);</br>
+   digitalWrite(buzzer, LOW);</br>
+   digitalWrite(led3, LOW);</br>
+    }</br>
+}</br>
 
 ## CIRCUIT DIAGRAM:
+![water](https://github.com/Jeganvjk/Automatic-water-level-controller/assets/132189820/0892c14c-914c-4abf-929a-35cb3588bd5a)
 
 ## OUTPUT:
+![water](https://github.com/Jeganvjk/Automatic-water-level-controller/assets/132189820/0892c14c-914c-4abf-929a-35cb3588bd5a)
 
 ## RESULT:
 Thus the water level of the tank was monitored and controlled using Arduino UNO controller.
